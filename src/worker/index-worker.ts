@@ -100,19 +100,42 @@ export default {
         headers: { 'Content-Type': 'application/json' }
       });
     }
-    // Check if credentials are configured
-    if (!env.DATAFORSEO_USERNAME || !env.DATAFORSEO_PASSWORD) {
-      if (['/mcp','/http', '/sse', '/messages','/sse/message'].includes(url.pathname)) {
+    // Shared secret authentication for MCP endpoints
+    // Routes: /mcp/{token}, /sse/{token}, /sse/{token}/message
+    const mcpMatch = url.pathname.match(/^\/(mcp|http|sse)\/([^/]+)(\/message)?$/);
+    if (mcpMatch) {
+      const [, route, token, messageSuffix] = mcpMatch;
+      if (!env.SHARED_SECRET || token !== env.SHARED_SECRET) {
+        return new Response(JSON.stringify({ error: "forbidden" }), {
+          status: 403,
+          headers: { "Content-Type": "application/json" },
+        });
+      }
+
+      // Check if credentials are configured
+      if (!env.DATAFORSEO_USERNAME || !env.DATAFORSEO_PASSWORD) {
         return createErrorResponse(-32001, "DataForSEO credentials not configured in worker environment variables");
       }
-    }
-    // MCP endpoints using McpAgent pattern
-    if (url.pathname === "/sse" || url.pathname === "/sse/message") {
-      return DataForSEOMcpAgent.serveSSE("/sse").fetch(request, env, ctx);
+
+      // Rewrite the URL to strip the token so the handler sees the original path
+      const cleanPath = route === "sse" && messageSuffix ? "/sse/message" : `/${route}`;
+      const rewrittenUrl = new URL(cleanPath, url.origin);
+      rewrittenUrl.search = url.search;
+      const rewrittenRequest = new Request(rewrittenUrl.toString(), request);
+
+      if (route === "sse") {
+        return DataForSEOMcpAgent.serveSSE("/sse").fetch(rewrittenRequest, env, ctx);
+      }
+      // mcp or http
+      return DataForSEOMcpAgent.serve("/mcp").fetch(rewrittenRequest, env, ctx);
     }
 
-    if (url.pathname === "/mcp" || url.pathname == '/http') {
-      return DataForSEOMcpAgent.serve("/mcp").fetch(request, env, ctx);
+    // Reject bare /mcp, /sse, /http without a token
+    if (["/mcp", "/http", "/sse", "/sse/message"].includes(url.pathname)) {
+      return new Response(JSON.stringify({ error: "forbidden" }), {
+        status: 403,
+        headers: { "Content-Type": "application/json" },
+      });
     }
 
     return new Response("Not found", { status: 404 });
