@@ -1,7 +1,7 @@
 {
   // Tell editors / Wrangler what to validate against
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "dataforseo-mcp-worker",
+  "name": "dataforseo-mcp",
   "main": "build/worker/worker/index-worker.js",
   "compatibility_date": "2025-07-05",
   "compatibility_flags": ["nodejs_compat"],
@@ -9,7 +9,7 @@
   "vars": {
     "DATAFORSEO_USERNAME": "YOUR_LOGIN",
     "DATAFORSEO_PASSWORD": "YOUR_PASSWORD",
-    "ENABLED_MODULES": null,
+    "ENABLED_MODULES": "KEYWORDS_DATA,DATAFORSEO_LABS,SERP,ONPAGE,BACKLINKS",
     "DATAFORSEO_FULL_RESPONSE": "false",
 	"DATAFORSEO_SIMPLE_FILTER":"false"
   },
