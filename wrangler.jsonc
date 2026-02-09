@@ -37,5 +37,20 @@
 			"database_name": "seo-keyword-cache",
 			"database_id": "55084568-a53a-41a4-b9fd-97d20b5c47d1"
 		}
-	]
+	],
+	"observability": {
+		"enabled": false,
+		"head_sampling_rate": 1,
+		"logs": {
+			"enabled": true,
+			"head_sampling_rate": 1,
+			"persist": true,
+			"invocation_logs": true
+		},
+		"traces": {
+			"enabled": false,
+			"persist": true,
+			"head_sampling_rate": 1
+		}
+	}
 }
