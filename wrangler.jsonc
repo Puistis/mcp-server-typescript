@@ -6,13 +6,12 @@
   "compatibility_date": "2025-07-05",
   "compatibility_flags": ["nodejs_compat"],
   "minify": true,
+  // Sensitive vars (DATAFORSEO_USERNAME, DATAFORSEO_PASSWORD, SHARED_SECRET)
+  // should be set as secrets via Cloudflare dashboard or: wrangler secret put <NAME>
   "vars": {
-    "DATAFORSEO_USERNAME": "YOUR_LOGIN",
-    "DATAFORSEO_PASSWORD": "YOUR_PASSWORD",
     "ENABLED_MODULES": "KEYWORDS_DATA,DATAFORSEO_LABS,SERP,ONPAGE,BACKLINKS",
     "DATAFORSEO_FULL_RESPONSE": "false",
-	"DATAFORSEO_SIMPLE_FILTER":"false",
-	"SHARED_SECRET": ""
+    "DATAFORSEO_SIMPLE_FILTER": "false"
   },
   	"durable_objects": {
 		"bindings": [
