@@ -30,4 +30,12 @@
 			"tag": "v1"
 		}
 	],
+	// D1 database for keyword cache
+	"d1_databases": [
+		{
+			"binding": "SEO_CACHE_DB",
+			"database_name": "seo-keyword-cache",
+			"database_id": "55084568-a53a-41a4-b9fd-97d20b5c47d1"
+		}
+	]
 }

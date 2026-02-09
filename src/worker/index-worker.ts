@@ -5,11 +5,14 @@ import { DataForSEOClient, DataForSEOConfig } from '../core/client/dataforseo.cl
 import { EnabledModulesSchema } from '../core/config/modules.config.js';
 import { BaseModule, ToolDefinition } from '../core/modules/base.module.js';
 import { ModuleLoaderService } from '../core/utils/module-loader.js';
+import { CacheService } from '../core/cache/cache-service.js';
+import { CacheModule } from '../core/modules/cache/cache.module.js';
+import { createCacheWrappedHandler } from '../core/cache/cache-middleware.js';
 import { version, name } from './version.worker.js';
 
 /**
  * DataForSEO MCP Server for Cloudflare Workers
- * 
+ *
  * This server provides MCP (Model Context Protocol) access to DataForSEO APIs
  * through a Cloudflare Worker runtime using the agents/mcp pattern.
  */
@@ -43,19 +46,54 @@ export class DataForSEOMcpAgent extends McpAgent {
       username: workerEnv.DATAFORSEO_USERNAME || "",
       password: workerEnv.DATAFORSEO_PASSWORD || "",
     };
-    
+
     const dataForSEOClient = new DataForSEOClient(dataForSEOConfig);
-    
+
     // Parse enabled modules from environment
     const enabledModules = EnabledModulesSchema.parse(workerEnv.ENABLED_MODULES);
-    
+
     // Initialize and load modules
     const modules: BaseModule[] = ModuleLoaderService.loadModules(dataForSEOClient, enabledModules);
-    
+
+    // Initialize D1 cache if available
+    const db = (workerEnv as any).SEO_CACHE_DB;
+    let cacheService: CacheService | null = null;
+
+    if (db) {
+      try {
+        cacheService = new CacheService(db);
+        await cacheService.initializeSchema();
+      } catch (e) {
+        console.error('Failed to initialize D1 cache:', e);
+        cacheService = null;
+      }
+    }
+
     // Register tools from all modules
     modules.forEach(module => {
       const tools = module.getTools();
       Object.entries(tools).forEach(([name, tool]) => {
+        const typedTool = tool as ToolDefinition;
+        const schema = z.object(typedTool.params);
+
+        // Wrap handler with cache middleware if D1 is available
+        const handler = cacheService
+          ? createCacheWrappedHandler(name, typedTool.handler, cacheService)
+          : typedTool.handler;
+
+        this.server.tool(
+          name,
+          schema.shape,
+          handler
+        );
+      });
+    });
+
+    // Register cache tools if D1 is available
+    if (cacheService && db) {
+      const cacheModule = new CacheModule(db);
+      const cacheTools = cacheModule.getTools();
+      Object.entries(cacheTools).forEach(([name, tool]) => {
         const typedTool = tool as ToolDefinition;
         const schema = z.object(typedTool.params);
         this.server.tool(
@@ -64,7 +102,7 @@ export class DataForSEOMcpAgent extends McpAgent {
           typedTool.handler
         );
       });
-    });
+    }
   }
 }
 
