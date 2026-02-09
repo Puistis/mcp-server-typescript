@@ -55,17 +55,18 @@ export class DataForSEOMcpAgent extends McpAgent {
     // Initialize and load modules
     const modules: BaseModule[] = ModuleLoaderService.loadModules(dataForSEOClient, enabledModules);
 
-    // Initialize D1 cache if available
+    // Initialize D1 cache if binding exists
     const db = (workerEnv as any).SEO_CACHE_DB;
     let cacheService: CacheService | null = null;
 
     if (db) {
+      cacheService = new CacheService(db);
+      // Lightweight connectivity check — tables must exist via migrations
       try {
-        cacheService = new CacheService(db);
-        await cacheService.initializeSchema();
+        await cacheService.verifyConnection();
       } catch (e) {
-        console.error('Failed to initialize D1 cache:', e);
-        cacheService = null;
+        console.error('D1 cache connectivity check failed (tables may not exist yet):', e);
+        // Continue anyway — cache tools will return errors but won't block other tools
       }
     }
 
@@ -89,8 +90,8 @@ export class DataForSEOMcpAgent extends McpAgent {
       });
     });
 
-    // Register cache tools if D1 is available
-    if (cacheService && db) {
+    // Register cache tools if D1 binding exists
+    if (db) {
       const cacheModule = new CacheModule(db);
       const cacheTools = cacheModule.getTools();
       Object.entries(cacheTools).forEach(([name, tool]) => {
