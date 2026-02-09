@@ -3,6 +3,7 @@ import { DataForSEOClient } from '../client/dataforseo.client.js';
 import { defaultGlobalToolConfig } from '../config/global.tool.js';
 import { filterFields, parseFieldPaths } from '../utils/field-filter.js';
 import { FieldConfigurationManager } from '../config/field-configuration.js';
+import { parseResponse, hasParser } from '../parsers/index.js';
 
 export interface DataForSEOFullResponse {
   version: string;
@@ -75,6 +76,14 @@ export abstract class BaseTool {
       return this.formatResponse(result);
     }
     this.validateResponse(response);
+
+    // Apply response parser if one exists for this tool
+    const toolName = this.getName();
+    if (hasParser(toolName)) {
+      const parsed = parseResponse(toolName, response);
+      return this.formatResponse(parsed);
+    }
+
     return this.formatResponse(response);
   }
 
