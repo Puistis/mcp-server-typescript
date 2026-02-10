@@ -28,7 +28,7 @@ export function parseRankedKeywords(item: any): any {
   if (serp.etv != null) result.etv = serp.etv;
 
   const monthly = formatMonthly(ki.monthly_searches);
-  if (monthly) result.monthly = monthly;
+  if (monthly && monthly.length > 0) result.monthly = monthly;
 
   return result;
 }

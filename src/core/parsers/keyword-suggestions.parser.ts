@@ -25,7 +25,7 @@ export function parseKeywordSuggestions(item: any): any {
   if (si.main_intent) result.intent = si.main_intent;
 
   const monthly = formatMonthly(ki.monthly_searches);
-  if (monthly) result.monthly = monthly;
+  if (monthly && monthly.length > 0) result.monthly = monthly;
 
   if (kp.keyword_difficulty != null) result.kd = kp.keyword_difficulty;
 
