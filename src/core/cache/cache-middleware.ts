@@ -34,6 +34,26 @@ const TOOL_SOURCE_MAP: Record<string, string> = {
 };
 
 /**
+ * Parse cached monthly_searches JSON into a sorted integer array (newest first).
+ * Handles both new array format and legacy object format {"YYYY-MM": vol}.
+ */
+function parseCachedMonthly(raw: string | null): number[] | null {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) return parsed.length > 0 ? parsed : null;
+    if (typeof parsed === 'object' && parsed !== null) {
+      const keys = Object.keys(parsed);
+      if (keys.length === 0) return null;
+      return keys.sort().reverse().map(k => parsed[k]);
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Creates a wrapped handler that caches results after the original handler runs.
  * For keyword search volume, implements bulk cache check (fetch only missing from API).
  */
@@ -103,9 +123,8 @@ function createSearchVolumeCacheHandler(
         const item: any = { kw: c.keyword, vol: c.search_volume };
         if (c.cpc != null) item.cpc = c.cpc;
         if (c.competition) item.comp = c.competition;
-        if (c.monthly_searches) {
-          try { item.monthly = JSON.parse(c.monthly_searches); } catch { /* skip */ }
-        }
+        const monthly = parseCachedMonthly(c.monthly_searches);
+        if (monthly) item.monthly = monthly;
         return item;
       });
 
@@ -148,9 +167,8 @@ function createSearchVolumeCacheHandler(
         const item: any = { kw: c.keyword, vol: c.search_volume };
         if (c.cpc != null) item.cpc = c.cpc;
         if (c.competition) item.comp = c.competition;
-        if (c.monthly_searches) {
-          try { item.monthly = JSON.parse(c.monthly_searches); } catch { /* skip */ }
-        }
+        const monthly = parseCachedMonthly(c.monthly_searches);
+        if (monthly) item.monthly = monthly;
         return item;
       });
 

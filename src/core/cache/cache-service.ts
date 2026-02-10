@@ -363,7 +363,15 @@ export class CacheService {
     const result = await this.db.prepare(query).bind(...bindings).all();
     return result.results.map((row: any) => {
       if (row.monthly && typeof row.monthly === 'string') {
-        try { row.monthly = JSON.parse(row.monthly); } catch { /* keep as string */ }
+        try {
+          const parsed = JSON.parse(row.monthly);
+          // Convert legacy object format to array (newest first)
+          if (Array.isArray(parsed)) {
+            row.monthly = parsed;
+          } else if (typeof parsed === 'object' && parsed !== null) {
+            row.monthly = Object.keys(parsed).sort().reverse().map(k => parsed[k]);
+          }
+        } catch { /* keep as string */ }
       }
       return row;
     });
@@ -486,7 +494,14 @@ export class CacheService {
     // JSON format
     return result.results.map((row: any) => {
       if (row.monthly_searches && typeof row.monthly_searches === 'string') {
-        try { row.monthly_searches = JSON.parse(row.monthly_searches); } catch { /* keep as string */ }
+        try {
+          const parsed = JSON.parse(row.monthly_searches);
+          if (Array.isArray(parsed)) {
+            row.monthly_searches = parsed;
+          } else if (typeof parsed === 'object' && parsed !== null) {
+            row.monthly_searches = Object.keys(parsed).sort().reverse().map(k => parsed[k]);
+          }
+        } catch { /* keep as string */ }
       }
       return row;
     });
