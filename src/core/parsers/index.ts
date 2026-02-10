@@ -17,7 +17,7 @@ import { parseSerpOrganic } from './serp-organic.parser.js';
 import { parseOnPage } from './on-page.parser.js';
 import { parseLighthouse } from './lighthouse.parser.js';
 
-export type ItemParser = (item: any) => any;
+export type ItemParser = (item: any, context?: any) => any;
 
 const parsers: Record<string, ItemParser> = {
   'kw_data_google_ads_search_volume': parseSearchVolume,
@@ -39,7 +39,7 @@ const parsers: Record<string, ItemParser> = {
  * Parse a DataForSEO API response, stripping unnecessary fields.
  * Error responses pass through unmodified.
  */
-export function parseResponse(toolName: string, rawResponse: any): any {
+export function parseResponse(toolName: string, rawResponse: any, params?: any): any {
   // Never parse error responses
   if (rawResponse?.status_code && rawResponse.status_code !== 20000) {
     return rawResponse;
@@ -51,7 +51,7 @@ export function parseResponse(toolName: string, rawResponse: any): any {
   const items = rawResponse?.items || [];
   if (!Array.isArray(items) || items.length === 0) return rawResponse;
 
-  const parsed = items.map((item: any) => parser(item)).filter((item: any) => item != null);
+  const parsed = items.map((item: any) => parser(item, params)).filter((item: any) => item != null);
 
   return {
     status: rawResponse.status_code,

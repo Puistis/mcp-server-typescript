@@ -67,7 +67,7 @@ export abstract class BaseTool {
     return filterExpression;
   }
 
-  protected validateAndFormatResponse(response: any): { content: Array<{ type: string; text: string }> } {
+  protected validateAndFormatResponse(response: any, params?: any): { content: Array<{ type: string; text: string }> } {
     console.error(JSON.stringify(response));
     if (defaultGlobalToolConfig.fullResponse || this.supportOnlyFullResponse()) {
       let data = response as DataForSEOFullResponse;
@@ -80,7 +80,7 @@ export abstract class BaseTool {
     // Apply response parser if one exists for this tool
     const toolName = this.getName();
     if (hasParser(toolName)) {
-      const parsed = parseResponse(toolName, response);
+      const parsed = parseResponse(toolName, response, params);
       return this.formatResponse(parsed);
     }
 

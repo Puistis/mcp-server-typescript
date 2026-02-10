@@ -2,12 +2,14 @@
  * Parser for dataforseo_labs_google_domain_rank_overview
  */
 
-export function parseDomainRankOverview(item: any): any {
+export function parseDomainRankOverview(item: any, context?: any): any {
   if (!item) return null;
 
-  const result: any = {
-    target: item.target,
-  };
+  const result: any = {};
+
+  // .ai endpoint loses result-level target — fall back to request params
+  const target = item.target || context?.target;
+  if (target) result.target = target;
 
   // Parse organic metrics
   const organic = item.metrics?.organic;
@@ -24,14 +26,12 @@ export function parseDomainRankOverview(item: any): any {
     result.organic = o;
   }
 
-  // Parse paid metrics (minimal)
+  // Always include paid metrics (default to zeros when absent)
   const paid = item.metrics?.paid;
-  if (paid) {
-    const p: any = {};
-    if (paid.count != null) p.count = paid.count;
-    if (paid.etv != null) p.etv = paid.etv;
-    result.paid = p;
-  }
+  result.paid = {
+    count: paid?.count ?? 0,
+    etv: paid?.etv ?? 0,
+  };
 
   return result;
 }

@@ -2,8 +2,16 @@
  * Parser for kw_data_google_ads_search_volume
  */
 
-function formatMonthly(monthlySearches: any[] | null | undefined): Record<string, number> | undefined {
-  if (!monthlySearches || !Array.isArray(monthlySearches)) return undefined;
+function formatMonthly(monthlySearches: any): Record<string, number> | undefined {
+  if (!monthlySearches) return undefined;
+
+  // .ai endpoint returns already-simplified {"YYYY-MM": volume} map
+  if (typeof monthlySearches === 'object' && !Array.isArray(monthlySearches)) {
+    return Object.keys(monthlySearches).length > 0 ? monthlySearches : undefined;
+  }
+
+  // Full endpoint returns [{year, month, search_volume}] array
+  if (!Array.isArray(monthlySearches)) return undefined;
   const result: Record<string, number> = {};
   for (const entry of monthlySearches) {
     if (entry && entry.year != null && entry.month != null) {
