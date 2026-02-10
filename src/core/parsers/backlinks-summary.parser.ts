@@ -5,11 +5,6 @@
 export function parseBacklinksSummary(item: any): any {
   if (!item) return null;
 
-  // Log item keys for debugging .ai response structure
-  if (item.target) {
-    console.error(`[backlinks_summary] item keys for "${item.target}": ${Object.keys(item).join(', ')}`);
-  }
-
   const result: any = {
     target: item.target,
   };
