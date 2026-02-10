@@ -492,6 +492,46 @@ export class CacheService {
     });
   }
 
+  // ─── Cache Invalidation ──────────────────────────────────────────
+
+  async clearCache(params: {
+    table?: string;
+    location?: string;
+    language?: string;
+    keyword_like?: string;
+  }): Promise<{ deleted: number }> {
+    const table = params.table || 'keywords';
+    const allowed = ['keywords', 'keyword_rankings', 'domains', 'search_logs'];
+    if (!allowed.includes(table)) {
+      throw new Error(`Invalid table: ${table}. Must be one of: ${allowed.join(', ')}`);
+    }
+
+    if (table === 'search_logs') {
+      const result = await this.db.prepare('DELETE FROM search_logs').run();
+      return { deleted: result.meta?.changes ?? 0 };
+    }
+
+    const conditions: string[] = [];
+    const bindings: any[] = [];
+
+    if (params.location) {
+      conditions.push('location = ?');
+      bindings.push(params.location);
+    }
+    if (params.language) {
+      conditions.push('language = ?');
+      bindings.push(params.language);
+    }
+    if (params.keyword_like && table !== 'domains') {
+      conditions.push('keyword LIKE ?');
+      bindings.push(`%${params.keyword_like}%`);
+    }
+
+    const where = conditions.length > 0 ? ` WHERE ${conditions.join(' AND ')}` : '';
+    const result = await this.db.prepare(`DELETE FROM ${table}${where}`).bind(...bindings).run();
+    return { deleted: result.meta?.changes ?? 0 };
+  }
+
   // ─── Verify DB Connection ───────────────────────────────────────
 
   /**
