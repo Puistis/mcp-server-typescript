@@ -41,7 +41,7 @@ example:
         language_code: params.language_code,
         ignore_synonyms: params.ignore_synonyms
       }]);
-      return this.validateAndFormatResponse(response);
+      return this.validateAndFormatResponse(response, params);
     } catch (error) {
       return this.formatErrorResponse(error);
     }

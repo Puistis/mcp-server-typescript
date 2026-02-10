@@ -10,7 +10,9 @@ export function parseBacklinksSummary(item: any): any {
   };
 
   if (item.backlinks != null) result.backlinks = item.backlinks;
-  if (item.dofollow != null) result.dofollow = item.dofollow;
+  // No top-level dofollow field in summary; extract from referring_links_attributes
+  const dofollow = item.dofollow ?? item.referring_links_attributes?.dofollow;
+  if (dofollow != null) result.dofollow = dofollow;
   if (item.referring_domains != null) result.ref_domains = item.referring_domains;
   if (item.referring_domains_nofollow != null) result.ref_domains_nofollow = item.referring_domains_nofollow;
   if (item.rank != null) result.rank = item.rank;
