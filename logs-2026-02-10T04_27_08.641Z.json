@@ -1,0 +1,704 @@
+[
+  {
+    "source": {
+      "level": "error",
+      "id": "02100451-1375-0367-0000-7304fe4b8d23",
+      "status_message": "Ok.",
+      "items": [
+        {
+          "keyword": "siivouspalvelu",
+          "language_code": "fi",
+          "competition": "HIGH",
+          "location_code": 2246,
+          "competition_index": 76,
+          "search_volume": 2900,
+          "low_top_of_page_bid": 1.19,
+          "high_top_of_page_bid": 4.42,
+          "cpc": 4.59,
+          "monthly_searches": {
+            "2025-12": 2400,
+            "2025-11": 2900,
+            "2025-10": 2900,
+            "2025-09": 2900,
+            "2025-08": 2400,
+            "2025-07": 1900,
+            "2025-06": 1900,
+            "2025-05": 2900,
+            "2025-04": 2900,
+            "2025-03": 3600,
+            "2025-02": 3600,
+            "2025-01": 3600
+          }
+        }
+      ],
+      "status_code": 20000
+    },
+    "dataset": "cloudflare-workers",
+    "timestamp": "2026-02-10T02:51:38.340Z",
+    "$workers": {
+      "truncated": false,
+      "event": {
+        "getWebSocketEvent": {
+          "webSocketEventType": "message"
+        }
+      },
+      "scriptName": "dataforseo-mcp",
+      "outcome": "ok",
+      "eventType": "websocket",
+      "scriptVersion": {
+        "id": "7f33df43-66e2-444d-a8e9-eaf876b6ac3a"
+      },
+      "executionModel": "durableObject",
+      "durableObjectId": "bd6b469f6c6090c3fea432c7a03933446755160855bb347640e47228ab161b81",
+      "requestId": "OOQ7CU2ME8H6CT1R"
+    },
+    "$metadata": {
+      "id": "01KH2QCAZ4NKFW30QVWBFDAQW1",
+      "requestId": "OOQ7CU2ME8H6CT1R",
+      "trigger": "dataforseo-mcp",
+      "service": "dataforseo-mcp",
+      "level": "error",
+      "error": "error",
+      "account": "2a0c64dfec36426c69434331ee01a349",
+      "type": "cf-worker",
+      "fingerprint": "6e4b03f0249e3fbd8662402e8bbdd4e1",
+      "origin": "websocket"
+    },
+    "links": []
+  },
+  {
+    "source": {
+      "0": {
+        "location_name": "Finland",
+        "language_code": "fi",
+        "keywords": [
+          "siivouspalvelu"
+        ]
+      },
+      "level": "error",
+      "message": "Making request to https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live.ai with method POST and body"
+    },
+    "dataset": "cloudflare-workers",
+    "timestamp": "2026-02-10T02:51:37.840Z",
+    "$workers": {
+      "truncated": false,
+      "event": {
+        "getWebSocketEvent": {
+          "webSocketEventType": "message"
+        }
+      },
+      "scriptName": "dataforseo-mcp",
+      "outcome": "ok",
+      "eventType": "websocket",
+      "scriptVersion": {
+        "id": "7f33df43-66e2-444d-a8e9-eaf876b6ac3a"
+      },
+      "executionModel": "durableObject",
+      "durableObjectId": "bd6b469f6c6090c3fea432c7a03933446755160855bb347640e47228ab161b81",
+      "requestId": "OOQ7CU2ME8H6CT1R"
+    },
+    "$metadata": {
+      "id": "01KH2QCAH2FMTZ8E4BD52V8DFX",
+      "requestId": "OOQ7CU2ME8H6CT1R",
+      "trigger": "dataforseo-mcp",
+      "service": "dataforseo-mcp",
+      "level": "error",
+      "error": "Making request to https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live.ai with method POST and body",
+      "message": "Making request to https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live.ai with method POST and body",
+      "account": "2a0c64dfec36426c69434331ee01a349",
+      "type": "cf-worker",
+      "fingerprint": "b4ae35f9a36d0fa1c7edbf3a6e94f21c",
+      "origin": "websocket",
+      "messageTemplate": "Making request to https://api.dataforseo.com/v3/keywords_data/google_ads/search_volume/live.ai with method POST and body"
+    },
+    "links": []
+  },
+  {
+    "source": {
+      "level": "error",
+      "message": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')"
+    },
+    "dataset": "cloudflare-workers",
+    "timestamp": "2026-02-10T02:51:37.368Z",
+    "$workers": {
+      "truncated": false,
+      "event": {
+        "rpcMethod": "_init"
+      },
+      "scriptName": "dataforseo-mcp",
+      "outcome": "ok",
+      "eventType": "rpc",
+      "scriptVersion": {
+        "id": "7f33df43-66e2-444d-a8e9-eaf876b6ac3a"
+      },
+      "executionModel": "durableObject",
+      "durableObjectId": "bd6b469f6c6090c3fea432c7a03933446755160855bb347640e47228ab161b81",
+      "requestId": "3FELZRJC54ZX0P7K"
+    },
+    "$metadata": {
+      "id": "01KH2QCA0R2VC6J437N764JW7R",
+      "requestId": "3FELZRJC54ZX0P7K",
+      "trigger": "default._init",
+      "service": "dataforseo-mcp",
+      "level": "error",
+      "error": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')",
+      "message": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')",
+      "account": "2a0c64dfec36426c69434331ee01a349",
+      "type": "cf-worker",
+      "fingerprint": "1ede7796442e8e1a47578396811abaf7",
+      "origin": "rpc",
+      "messageTemplate": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')"
+    },
+    "links": []
+  },
+  {
+    "source": {
+      "items": [
+        {
+          "ranked_serp_element": {
+            "serp_item": {
+              "rank_changes": {
+                "is_new": true
+              },
+              "se_type": "google",
+              "type": "organic",
+              "domain": "www.anthropic.com",
+              "title": "Effective context engineering for AI agents",
+              "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+              "breadcrumb": "https://www.anthropic.com › engineering › effective-co...",
+              "website_name": "Anthropic",
+              "description": "Sep 29, 2025 — Context engineering refers to the set of strategies for curating and maintaining the optimal set of tokens (information) during LLM inference, ... Read more",
+              "pre_snippet": "09/29/2025 00:00:00",
+              "highlighted": [
+                "Context engineering"
+              ],
+              "main_domain": "anthropic.com",
+              "relative_url": "/engineering/effective-context-engineering-for-ai-agents",
+              "backlinks_info": {
+                "time_update": "2026-01-31 02:26:49 +00:00",
+                "referring_domains": 584,
+                "referring_main_domains": 548,
+                "referring_pages": 1240,
+                "dofollow": 963,
+                "backlinks": 1750
+              },
+              "rank_group": 1,
+              "rank_absolute": 1,
+              "etv": 15.2,
+              "estimated_paid_traffic_cost": 560.728,
+              "rank_info": {
+                "page_rank": 318,
+                "main_domain_rank": 556
+              }
+            },
+            "se_type": "google",
+            "check_url": "https://www.google.com/search?q=agent%20context%20engineering&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+            "serp_item_types": [
+              "organic",
+              "video",
+              "perspectives",
+              "related_searches",
+              "images"
+            ],
+            "last_updated_time": "2025-12-22 19:58:59 +00:00",
+            "se_results_count": 138000000,
+            "keyword_difficulty": 30
+          },
+          "se_type": "google",
+          "keyword_data": {
+            "se_type": "google",
+            "keyword": "agent context engineering",
+            "language_code": "en",
+            "keyword_info": {
+              "se_type": "google",
+              "last_updated_time": "2026-01-24 03:37:07 +00:00",
+              "competition_level": "LOW",
+              "competition": 0.24,
+              "cpc": 36.89,
+              "search_volume": 50,
+              "low_top_of_page_bid": 3.17,
+              "high_top_of_page_bid": 18.3,
+              "categories": [
+                10004,
+                10273
+              ],
+              "monthly_searches": {
+                "2025-12": 140,
+                "2025-11": 110,
+                "2025-10": 390,
+                "2025-09": 20,
+                "2025-08": 10,
+                "2025-07": 20
+              },
+              "search_volume_trend": {
+                "monthly": 27,
+                "quarterly": -64
+              }
+            },
+            "keyword_properties": {
+              "se_type": "google",
+              "core_keyword": "agentic context engineering",
+              "synonym_clustering_algorithm": "text_processing",
+              "detected_language": "en",
+              "keyword_difficulty": 30
+            },
+            "serp_info": {
+              "se_type": "google",
+              "check_url": "https://www.google.com/search?q=agent%20context%20engineering&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+              "serp_item_types": [
+                "organic",
+                "video",
+                "perspectives",
+                "related_searches",
+                "images"
+              ],
+              "last_updated_time": "2025-12-22 19:58:59 +00:00",
+              "se_results_count": 138000000
+            },
+            "avg_backlinks_info": {
+              "se_type": "google",
+              "last_updated_time": "2025-12-22 19:59:00 +00:00",
+              "backlinks": 187.7,
+              "dofollow": 122.4,
+              "referring_pages": 152.7,
+              "referring_domains": 71.5,
+              "referring_main_domains": 68.3,
+              "rank": 164.8,
+              "main_domain_rank": 610.4
+            },
+            "search_intent_info": {
+              "se_type": "google",
+              "main_intent": "informational",
+              "foreign_intent": [
+                "navigational"
+              ],
+              "last_updated_time": "2025-11-14 09:15:00 +00:00"
+            },
+            "location_code": 2840
+          }
+        },
+        {
+          "keyword_data": {
+            "keyword_properties": {
+              "is_another_language": true,
+              "se_type": "google",
+              "core_keyword": "agent eval",
+              "synonym_clustering_algorithm": "text_processing",
+              "detected_language": "fr",
+              "keyword_difficulty": 14
+            },
+            "se_type": "google",
+            "keyword": "agent-evals",
+            "language_code": "en",
+            "keyword_info": {
+              "se_type": "google",
+              "last_updated_time": "2026-01-24 14:55:33 +00:00",
+              "competition_level": "LOW",
+              "competition": 0.29,
+              "cpc": 11.31,
+              "search_volume": 90,
+              "low_top_of_page_bid": 6.02,
+              "high_top_of_page_bid": 16.43,
+              "categories": [
+                10108,
+                10756,
+                13429
+              ],
+              "monthly_searches": {
+                "2025-12": 90,
+                "2025-11": 110,
+                "2025-10": 170,
+                "2025-09": 140,
+                "2025-08": 90,
+                "2025-07": 110,
+                "2025-06": 140,
+                "2025-05": 90,
+                "2025-04": 70,
+                "2025-03": 40,
+                "2025-02": 40,
+                "2025-01": 20
+              },
+              "search_volume_trend": {
+                "monthly": -18,
+                "quarterly": -47,
+                "yearly": 800
+              }
+            },
+            "serp_info": {
+              "se_type": "google",
+              "check_url": "https://www.google.com/search?q=agent-evals&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+              "serp_item_types": [
+                "organic",
+                "related_searches"
+              ],
+              "last_updated_time": "2026-01-25 22:18:53 +00:00",
+              "previous_updated_time": "2025-09-10 19:20:13 +00:00",
+              "se_results_count": 1790000
+            },
+            "avg_backlinks_info": {
+              "se_type": "google",
+              "last_updated_time": "2026-01-25 22:18:56 +00:00",
+              "backlinks": 37.8,
+              "dofollow": 25.6,
+              "referring_pages": 31.3,
+              "referring_domains": 8.8,
+              "referring_main_domains": 8.4,
+              "rank": 92.2,
+              "main_domain_rank": 557.7
+            },
+            "search_intent_info": {
+              "se_type": "google",
+              "main_intent": "informational",
+              "foreign_intent": [
+                "navigational"
+              ],
+              "last_updated_time": "2025-09-02 04:25:56 +00:00"
+            },
+            "location_code": 2840
+          },
+          "ranked_serp_element": {
+            "serp_item": {
+              "rank_changes": {
+                "is_new": true
+              },
+              "se_type": "google",
+              "type": "organic",
+              "domain": "www.anthropic.com",
+              "title": "Demystifying evals for AI agents",
+              "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+              "breadcrumb": "https://www.anthropic.com › engineering › demystifyin...",
+              "website_name": "Anthropic",
+              "description": "Jan 9, 2026 — Agent evaluations typically combine three types of graders: code-based, model-based, and human. Each grader evaluates some portion of either the ... Read more",
+              "pre_snippet": "01/09/2026 00:00:00",
+              "highlighted": [
+                "Agent"
+              ],
+              "main_domain": "anthropic.com",
+              "relative_url": "/engineering/demystifying-evals-for-ai-agents",
+              "backlinks_info": {
+                "time_update": "2026-01-31 03:26:10 +00:00",
+                "referring_domains": 49,
+                "referring_main_domains": 48,
+                "referring_pages": 76,
+                "dofollow": 49,
+                "backlinks": 95
+              },
+              "rank_group": 1,
+              "rank_absolute": 1,
+              "etv": 27.36,
+              "estimated_paid_traffic_cost": 309.442,
+              "rank_info": {
+                "page_rank": 154,
+                "main_domain_rank": 617
+              }
+            },
+            "se_type": "google",
+            "check_url": "https://www.google.com/search?q=agent-evals&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+            "serp_item_types": [
+              "organic",
+              "related_searches"
+            ],
+            "last_updated_time": "2026-01-25 22:18:53 +00:00",
+            "previous_updated_time": "2025-09-10 19:20:13 +00:00",
+            "se_results_count": 1790000,
+            "keyword_difficulty": 14
+          },
+          "se_type": "google"
+        },
+        {
+          "ranked_serp_element": {
+            "serp_item": {
+              "rank_changes": {
+                "is_up": true,
+                "previous_rank_absolute": 4
+              },
+              "se_type": "google",
+              "type": "organic",
+              "domain": "www.anthropic.com",
+              "title": "Building Effective AI Agents",
+              "url": "https://www.anthropic.com/research/building-effective-agents",
+              "breadcrumb": "https://www.anthropic.com › research › building-effecti...",
+              "website_name": "Anthropic",
+              "description": "Dec 19, 2024 — In this post, we share what we've learned from working with our customers and building agents ourselves, and give practical advice for developers on building ... Read more",
+              "pre_snippet": "12/19/2024 00:00:00",
+              "highlighted": [
+                "agents"
+              ],
+              "main_domain": "anthropic.com",
+              "relative_url": "/research/building-effective-agents",
+              "backlinks_info": {
+                "time_update": "2026-01-31 03:24:37 +00:00",
+                "referring_domains": 1126,
+                "referring_main_domains": 1054,
+                "referring_pages": 2485,
+                "dofollow": 1886,
+                "backlinks": 2975
+              },
+              "rank_group": 1,
+              "rank_absolute": 1,
+              "etv": 179.36,
+              "rank_info": {
+                "page_rank": 398,
+                "main_domain_rank": 613
+              }
+            },
+            "se_type": "google",
+            "check_url": "https://www.google.com/search?q=agent-structure&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+            "serp_item_types": [
+              "ai_overview",
+              "organic",
+              "images",
+              "people_also_ask",
+              "video",
+              "related_searches"
+            ],
+            "last_updated_time": "2026-01-22 19:31:35 +00:00",
+            "previous_updated_time": "2025-12-07 07:37:31 +00:00",
+            "se_results_count": 620000000,
+            "keyword_difficulty": 39
+          },
+          "se_type": "google",
+          "keyword_data": {
+            "se_type": "google",
+            "keyword": "agent-structure",
+            "language_code": "en",
+            "keyword_info": {
+              "se_type": "google",
+              "last_updated_time": "2026-01-23 20:57:31 +00:00",
+              "competition_level": "LOW",
+              "competition": 0.01,
+              "search_volume": 590,
+              "categories": [
+                10108
+              ],
+              "monthly_searches": {
+                "2025-12": 390,
+                "2025-11": 480,
+                "2025-10": 590,
+                "2025-09": 720,
+                "2025-08": 390,
+                "2025-07": 320,
+                "2025-06": 390,
+                "2025-05": 590,
+                "2025-04": 720,
+                "2025-03": 590,
+                "2025-02": 720,
+                "2025-01": 720
+              },
+              "search_volume_trend": {
+                "monthly": -19,
+                "quarterly": -34,
+                "yearly": -34
+              }
+            },
+            "keyword_properties": {
+              "se_type": "google",
+              "core_keyword": "agent structure",
+              "synonym_clustering_algorithm": "text_processing",
+              "detected_language": "en",
+              "keyword_difficulty": 39
+            },
+            "serp_info": {
+              "se_type": "google",
+              "check_url": "https://www.google.com/search?q=agent-structure&hl=en&gl=US&ie=UTF-8&uule=w+CAIQIFISCQs2MuSEtepUEUK33kOSuTsc",
+              "serp_item_types": [
+                "ai_overview",
+                "organic",
+                "images",
+                "people_also_ask",
+                "video",
+                "related_searches"
+              ],
+              "last_updated_time": "2026-01-22 19:31:35 +00:00",
+              "previous_updated_time": "2025-12-07 07:37:31 +00:00",
+              "se_results_count": 620000000
+            },
+            "avg_backlinks_info": {
+              "se_type": "google",
+              "last_updated_time": "2026-01-22 19:31:37 +00:00",
+              "backlinks": 652.8,
+              "dofollow": 408.9,
+              "referring_pages": 553.1,
+              "referring_domains": 294.3,
+              "referring_main_domains": 278.6,
+              "rank": 173.1,
+              "main_domain_rank": 619.8
+            },
+            "search_intent_info": {
+              "se_type": "google",
+              "main_intent": "navigational",
+              "foreign_intent": [
+                "informational",
+                "commercial"
+              ],
+              "last_updated_time": "2023-08-01 07:04:00 +00:00"
+            },
+            "location_code": 2840
+          }
+        }
+      ],
+      "level": "error",
+      "id": "02100451-1375-0381-0000-bb7aa45a92a4",
+      "status_message": "Ok.",
+      "status_code": 20000
+    },
+    "dataset": "cloudflare-workers",
+    "timestamp": "2026-02-10T02:51:29.675Z",
+    "$workers": {
+      "truncated": false,
+      "event": {
+        "getWebSocketEvent": {
+          "webSocketEventType": "message"
+        }
+      },
+      "scriptName": "dataforseo-mcp",
+      "outcome": "ok",
+      "eventType": "websocket",
+      "scriptVersion": {
+        "id": "7f33df43-66e2-444d-a8e9-eaf876b6ac3a"
+      },
+      "executionModel": "durableObject",
+      "durableObjectId": "644ee2f033a648886534daa948ace3ed0c0fe3058154b3499f85d01e72e75920",
+      "requestId": "GF2XCUA3H3XW1IV4"
+    },
+    "$metadata": {
+      "id": "01KH2QC2GB6XR0MKN32Y8YCRP1",
+      "requestId": "GF2XCUA3H3XW1IV4",
+      "trigger": "dataforseo-mcp",
+      "service": "dataforseo-mcp",
+      "level": "error",
+      "error": "error",
+      "account": "2a0c64dfec36426c69434331ee01a349",
+      "type": "cf-worker",
+      "fingerprint": "6e4b03f0249e3fbd8662402e8bbdd4e1",
+      "origin": "websocket"
+    },
+    "links": []
+  },
+  {
+    "source": {
+      "0": {
+        "include_clickstream_data": false,
+        "target": "anthropic.com",
+        "location_name": "United States",
+        "language_code": "en",
+        "item_types": [
+          "organic"
+        ],
+        "limit": 3
+      },
+      "level": "error",
+      "message": "Making request to https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live.ai with method POST and body"
+    },
+    "dataset": "cloudflare-workers",
+    "timestamp": "2026-02-10T02:51:28.830Z",
+    "$workers": {
+      "truncated": false,
+      "event": {
+        "getWebSocketEvent": {
+          "webSocketEventType": "message"
+        }
+      },
+      "scriptName": "dataforseo-mcp",
+      "outcome": "ok",
+      "eventType": "websocket",
+      "scriptVersion": {
+        "id": "7f33df43-66e2-444d-a8e9-eaf876b6ac3a"
+      },
+      "executionModel": "durableObject",
+      "durableObjectId": "644ee2f033a648886534daa948ace3ed0c0fe3058154b3499f85d01e72e75920",
+      "requestId": "GF2XCUA3H3XW1IV4"
+    },
+    "$metadata": {
+      "id": "01KH2QC294E7QDSX4FENS6M7XQ",
+      "requestId": "GF2XCUA3H3XW1IV4",
+      "trigger": "dataforseo-mcp",
+      "service": "dataforseo-mcp",
+      "level": "error",
+      "error": "Making request to https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live.ai with method POST and body",
+      "message": "Making request to https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live.ai with method POST and body",
+      "account": "2a0c64dfec36426c69434331ee01a349",
+      "type": "cf-worker",
+      "fingerprint": "af71a697ba1392bc910af0881776d482",
+      "origin": "websocket",
+      "messageTemplate": "Making request to https://api.dataforseo.com/v3/dataforseo_labs/google/ranked_keywords/live.ai with method POST and body"
+    },
+    "links": []
+  },
+  {
+    "source": {
+      "level": "error",
+      "message": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')"
+    },
+    "dataset": "cloudflare-workers",
+    "timestamp": "2026-02-10T02:51:28.279Z",
+    "$workers": {
+      "truncated": false,
+      "event": {
+        "rpcMethod": "_init"
+      },
+      "scriptName": "dataforseo-mcp",
+      "outcome": "ok",
+      "eventType": "rpc",
+      "scriptVersion": {
+        "id": "7f33df43-66e2-444d-a8e9-eaf876b6ac3a"
+      },
+      "executionModel": "durableObject",
+      "durableObjectId": "644ee2f033a648886534daa948ace3ed0c0fe3058154b3499f85d01e72e75920",
+      "requestId": "H6JG89X8GMRC6TUL"
+    },
+    "$metadata": {
+      "id": "01KH2QC15GDCVXA0DDACJDJ8QR",
+      "requestId": "H6JG89X8GMRC6TUL",
+      "trigger": "default._init",
+      "service": "dataforseo-mcp",
+      "level": "error",
+      "error": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')",
+      "message": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')",
+      "account": "2a0c64dfec36426c69434331ee01a349",
+      "type": "cf-worker",
+      "fingerprint": "1ede7796442e8e1a47578396811abaf7",
+      "origin": "rpc",
+      "messageTemplate": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')"
+    },
+    "links": []
+  },
+  {
+    "source": {
+      "level": "error",
+      "message": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')"
+    },
+    "dataset": "cloudflare-workers",
+    "timestamp": "2026-02-10T02:44:05.871Z",
+    "$workers": {
+      "truncated": false,
+      "event": {
+        "rpcMethod": "_init"
+      },
+      "scriptName": "dataforseo-mcp",
+      "outcome": "ok",
+      "eventType": "rpc",
+      "scriptVersion": {
+        "id": "7f33df43-66e2-444d-a8e9-eaf876b6ac3a"
+      },
+      "executionModel": "durableObject",
+      "durableObjectId": "0598714a8c2f06486819794568b5541f30667870320d54043474f688c5e97827",
+      "requestId": "0V6GJ08WDD1BDLJB"
+    },
+    "$metadata": {
+      "id": "01KH2PYH3F8YP1TH8KANFJG1D5",
+      "requestId": "0V6GJ08WDD1BDLJB",
+      "trigger": "default._init",
+      "service": "dataforseo-mcp",
+      "level": "error",
+      "error": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')",
+      "message": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')",
+      "account": "2a0c64dfec36426c69434331ee01a349",
+      "type": "cf-worker",
+      "fingerprint": "1ede7796442e8e1a47578396811abaf7",
+      "origin": "rpc",
+      "messageTemplate": "Failed to initialize D1 cache: TypeError: Cannot read properties of undefined (reading 'duration')"
+    },
+    "links": []
+  }
+]
