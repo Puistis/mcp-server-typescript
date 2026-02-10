@@ -27,7 +27,8 @@ export function parseSearchVolume(item: any): any {
   };
 
   if (item.cpc != null) result.cpc = item.cpc;
-  if (item.competition_level) result.comp = item.competition_level;
+  // Google Ads endpoint uses "competition" (string: HIGH/MEDIUM/LOW), not "competition_level"
+  if (item.competition) result.comp = item.competition;
 
   const monthly = formatMonthly(item.monthly_searches);
   if (monthly) result.monthly = monthly;

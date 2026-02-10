@@ -10,7 +10,9 @@ export function parseLighthouse(item: any): any {
 
   const result: any = {};
 
-  if (item.url) result.url = item.url;
+  // Lighthouse report uses requestedUrl/finalUrl, not "url"
+  if (item.requestedUrl) result.url = item.requestedUrl;
+  else if (item.finalUrl) result.url = item.finalUrl;
 
   // Extract category scores
   const categories = item.categories;
