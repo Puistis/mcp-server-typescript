@@ -25,6 +25,11 @@ function formatMonthly(monthlySearches: any): Record<string, number> | undefined
 export function parseSearchVolume(item: any): any {
   if (!item) return null;
 
+  // Log first item's keys for debugging .ai response structure
+  if (item.keyword) {
+    console.error(`[search_volume] item keys for "${item.keyword}": ${Object.keys(item).join(', ')}`);
+  }
+
   if (!item.search_volume) {
     return { kw: item.keyword, vol: 0 };
   }

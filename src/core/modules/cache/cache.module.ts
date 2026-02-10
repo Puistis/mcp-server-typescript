@@ -147,6 +147,39 @@ export class CacheModule {
           }
         },
       },
+
+      cache_clear: {
+        description: 'Clear cached data to force fresh API fetches. Use after parser updates or to remove stale data. Without filters, clears entire table.',
+        params: {
+          table: z.enum(['keywords', 'keyword_rankings', 'domains', 'search_logs']).default('keywords').describe('Which cache table to clear'),
+          location: z.string().optional().describe('Only clear entries for this location'),
+          language: z.string().optional().describe('Only clear entries for this language'),
+          keyword_like: z.string().optional().describe('Only clear keywords matching this pattern'),
+        },
+        handler: async (params: any) => {
+          try {
+            const result = await this.cacheService.clearCache({
+              table: params.table,
+              location: params.location,
+              language: params.language,
+              keyword_like: params.keyword_like,
+            });
+            return {
+              content: [{
+                type: 'text',
+                text: JSON.stringify({ cleared: result.deleted, table: params.table || 'keywords' }, null, 2),
+              }],
+            };
+          } catch (error) {
+            return {
+              content: [{
+                type: 'text',
+                text: `Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
+              }],
+            };
+          }
+        },
+      },
     };
   }
 

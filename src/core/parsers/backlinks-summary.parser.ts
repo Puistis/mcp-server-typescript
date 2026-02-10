@@ -5,12 +5,17 @@
 export function parseBacklinksSummary(item: any): any {
   if (!item) return null;
 
+  // Log item keys for debugging .ai response structure
+  if (item.target) {
+    console.error(`[backlinks_summary] item keys for "${item.target}": ${Object.keys(item).join(', ')}`);
+  }
+
   const result: any = {
     target: item.target,
   };
 
   if (item.backlinks != null) result.backlinks = item.backlinks;
-  // No top-level dofollow field in summary; extract from referring_links_attributes
+  // Try multiple possible locations for dofollow count
   const dofollow = item.dofollow ?? item.referring_links_attributes?.dofollow;
   if (dofollow != null) result.dofollow = dofollow;
   if (item.referring_domains != null) result.ref_domains = item.referring_domains;

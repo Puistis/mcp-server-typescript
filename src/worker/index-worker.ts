@@ -92,17 +92,26 @@ export class DataForSEOMcpAgent extends McpAgent {
 
     // Register cache tools if D1 binding exists
     if (db) {
-      const cacheModule = new CacheModule(db);
-      const cacheTools = cacheModule.getTools();
-      Object.entries(cacheTools).forEach(([name, tool]) => {
-        const typedTool = tool as ToolDefinition;
-        const schema = z.object(typedTool.params);
-        this.server.tool(
-          name,
-          schema.shape,
-          typedTool.handler
-        );
-      });
+      try {
+        const cacheModule = new CacheModule(db);
+        const cacheTools = cacheModule.getTools();
+        for (const [toolName, tool] of Object.entries(cacheTools)) {
+          try {
+            const typedTool = tool as ToolDefinition;
+            this.server.tool(
+              toolName,
+              typedTool.description,
+              typedTool.params,
+              typedTool.handler
+            );
+            console.error(`Registered cache tool: ${toolName}`);
+          } catch (e) {
+            console.error(`Failed to register cache tool ${toolName}:`, e);
+          }
+        }
+      } catch (e) {
+        console.error('Failed to initialize cache module:', e);
+      }
     }
   }
 }
